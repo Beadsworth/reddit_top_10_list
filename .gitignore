@@ -84,9 +84,6 @@ celerybeat-schedule
 .venv/
 venv/
 ENV/
-bin/
-include/
-*.cfg
 
 # Spyder project settings
 .spyderproject
@@ -94,9 +91,8 @@ include/
 # Rope project settings
 .ropeproject
 
-/youtube_api.py-oauth2.json
-/reddit_secret.py
-/reddit_top_10_list.py-oauth2.json
-/client_secret.json
-/youtube.py-oauth2.json
-/pip-selfcheck.json
+# secret client files
+reddit_secret.py
+*.json
+
+
