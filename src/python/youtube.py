@@ -1,8 +1,4 @@
-import time
-import warnings
-from datetime import datetime as dt
-
-from youtube_api import get_authenticated_service,  list_videos, list_playlists, list_playlist_items, \
+from src.python.youtube_api import get_authenticated_service,  list_videos, list_playlists, list_playlist_items, \
     insert_playlists, delete_playlists, delete_playlist_items, insert_playlist_items, update_playlists
 
 

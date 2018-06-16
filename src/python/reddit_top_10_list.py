@@ -2,8 +2,8 @@ import traceback
 
 from datetime import datetime as dt
 from time import sleep
-from reddit import RedditYoutubeVideos
-from youtube import YoutubeClient
+from src.python.reddit import RedditYoutubeVideos
+from src.python.youtube import YoutubeClient
 
 
 class RedditPlaylist:
