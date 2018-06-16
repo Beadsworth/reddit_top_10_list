@@ -27,8 +27,8 @@ def get_authenticated_service():
 
     flow = flow_from_clientsecrets(CLIENT_SECRETS_FILE, SCOPES)
 
-    # storage = Storage("%s-oauth2.json" % sys.argv[0])
-    storage = Storage(r'/home/jmb/reddit_top_10/youtube_api.py-oauth2.json')
+    storage = Storage("%s-oauth2.json" % sys.argv[0])
+    # storage = Storage(r'/home/jmb/reddit_top_10/youtube_api.py-oauth2.json')
     credentials = storage.get()
 
     if credentials is None or credentials.invalid:
@@ -166,7 +166,7 @@ if __name__ == '__main__':
     # running in production *do not* leave this option enabled.
     # os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
-    pass
+    client = get_authenticated_service()
 
     # # typical use cases
     # client = get_authenticated_service()

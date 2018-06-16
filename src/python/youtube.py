@@ -1,4 +1,4 @@
-from src.python.youtube_api import get_authenticated_service,  list_videos, list_playlists, list_playlist_items, \
+from youtube_api import get_authenticated_service,  list_videos, list_playlists, list_playlist_items, \
     insert_playlists, delete_playlists, delete_playlist_items, insert_playlist_items, update_playlists
 
 
@@ -196,10 +196,4 @@ if __name__ == '__main__':
     # connect to youtube
     my_channel_id = 'UC0exDb_XPQxlt-95mbwEv5w'
     youtube = YoutubeClient(my_channel_id)
-    temp_playlist = youtube.get_playlist('PLinG0ekH7Ldtx6fks9Mxo6XEV7jLG02fB')
-    print(temp_playlist.title)
-    temp_playlist.update(title='Reuse Test')
-    print(temp_playlist.title)
-    temp_playlist.add_video('An2a1_Do_fc')
-    print(youtube.get_video('hello'))
-    pass
+    print(youtube.get_playlist('PLinG0ekH7Ldtx6fks9Mxo6XEV7jLG02fB').title)

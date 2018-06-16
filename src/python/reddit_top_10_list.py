@@ -1,9 +1,8 @@
 import traceback
 
 from datetime import datetime as dt
-from time import sleep
-from src.python.reddit import RedditYoutubeVideos
-from src.python.youtube import YoutubeClient
+from reddit import RedditYoutubeVideos
+from youtube import YoutubeClient
 
 
 class RedditPlaylist:
@@ -58,9 +57,6 @@ if __name__ == '__main__':
     print('#'*50)
     print("Script started at {0}".format(dt.now().strftime('%m/%d/%y %H:%M:%S')))
 
-    # setup
-    update_period_sec = 24*60*60
-
     # connect to reddit_client
     reddit_client = RedditYoutubeVideos()
     # connect to youtube
@@ -80,13 +76,5 @@ if __name__ == '__main__':
                                 subreddit=subreddit,
                                 youtube_playlist_id=playlist_id) for subreddit, playlist_id in playlist_ids.items()]
 
-    playlist_num = len(playlists)
-    sub_period = update_period_sec/playlist_num
-
-    i = -1
-    while True:
-
-        i += 1
-        current_playlist = playlists[i % playlist_num]
-        current_playlist.update()
-        sleep(sub_period)
+    for playlist in playlists:
+        playlist.update()
