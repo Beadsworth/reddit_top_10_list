@@ -64,10 +64,11 @@ class RedditYoutubeVideos:
         """return list of YoutubeVideo objects"""
         factor = 10
         extended_limit = limit * factor
-        extended_list = [YoutubeVideo(submission) for submission
+        extended_list = (YoutubeVideo(submission) for submission
                          in self.client.subreddit(subreddit).top(time_filter=period, limit=extended_limit)
-                         if is_youtube_video(submission)]
-        return extended_list[:10]
+                         if is_youtube_video(submission))
+        # only return videos with valid IDs
+        return [video for video in extended_list if video.id is not None][:limit]
 
 
 if __name__ == '__main__':

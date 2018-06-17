@@ -24,7 +24,7 @@ class RedditPlaylist:
                                                                  limit=2*self.playlist_size)
             video_ids = [video.id for video in reddit_videos]
             # verify video_ids with Youtube
-            youtube_videos = [self.youtube_client.get_video(video_id) for video_id in video_ids]
+            youtube_videos = [self.youtube_client.get_video(video_id) for video_id in video_ids if video_id is not None]
 
             # generate new playlist description
             header = "This playlist was updated automatically at {0}".format(dt.now().strftime('%m/%d/%y %H:%M:%S'))
