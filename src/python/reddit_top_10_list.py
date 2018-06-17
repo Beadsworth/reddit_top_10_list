@@ -22,14 +22,15 @@ class RedditPlaylist:
             reddit_videos = self.reddit_client.get_reddit_videos(subreddit=self.subreddit,
                                                                  period='day',
                                                                  limit=2*self.playlist_size)
-            video_ids = [video.id for video in reddit_videos]
+
+            valid_videos = {video.id: video for video in reddit_videos if video.id}
             # verify video_ids with Youtube
-            youtube_videos = [self.youtube_client.get_video(video_id) for video_id in video_ids if video_id is not None]
+            youtube_videos = [self.youtube_client.get_video(video_id) for video_id in valid_videos][:self.playlist_size]
 
             # generate new playlist description
             header = "This playlist was updated automatically at {0}".format(dt.now().strftime('%m/%d/%y %H:%M:%S'))
-            reddit_video_list_str = '\r\n'.join(['{0}. {1}'.format(i + 1, x.reddit_submission_title)
-                                                 for i, x in enumerate(reddit_videos)])
+            reddit_video_list_str = '\r\n'.join(['{0}. {1}'.format(i + 1, valid_videos[x.id].reddit_submission_title)
+                                                 for i, x in enumerate(youtube_videos)])
             description = header + '\r\n\r\n' + reddit_video_list_str
 
             # print video titles

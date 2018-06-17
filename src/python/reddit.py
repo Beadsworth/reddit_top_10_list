@@ -60,6 +60,7 @@ class RedditYoutubeVideos:
                                   client_id=reddit_secret.client_id,
                                   client_secret=reddit_secret.client_secret)
 
+    #TODO consider returning dictionary
     def get_reddit_videos(self, subreddit='videos', period='day', limit=10):
         """return list of YoutubeVideo objects"""
         factor = 10
